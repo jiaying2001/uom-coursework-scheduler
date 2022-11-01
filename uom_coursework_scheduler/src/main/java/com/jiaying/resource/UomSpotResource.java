@@ -11,9 +11,4 @@ public class UomSpotResource extends ResourceFromWeb{
 	UomSpotResource(@Qualifier("jsonParser")Parser parser, @Qualifier("pythonLoader")ResourceLoader loader) {
 		super(parser, loader);
 	}
-	
-	
-	
-	
-
 }

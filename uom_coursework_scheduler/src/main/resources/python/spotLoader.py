@@ -42,17 +42,14 @@ class Login(object):
 		respond = self.session.get(respond.headers.get("Location"), headers=self.logined_headers)
 		respond = self.session.get(self.logined_url, headers=self.logined_headers)
 
+		Json_string = ''
 		courseUnits = ["SUM-2022COMP26120", "SUM-2022COMP26020", "SUM-2022COMP24011", "SUM-2022COMP23311", "SUM-2022COMP21111", "SUM-2022COMP22111"]
 		doc = pq(respond.text)
 		for courseUnit in courseUnits:
 			dueAssessments = doc("#" + courseUnit + " td")
-			self.convert_to_JSON(dueAssessments.text())
-	
-	def convert_to_JSON(self, string):
-		string = string.replace("&nbsp ", "").replace("Tag", "").replace("🤞", "submitted ").replace("🟢", "").replace("🟠", "").split()
-		Json_string = ''
-		for i in range(0, int(len(string) / 8)):
-			Json_string += '{{"Assessment Name": "{}", "Weight": "{}", "Due": "{}", "Marks": "{}" }},'.format(string[0 + i * 8], string[1 + i * 8], "-".join(string[2 + i * 8 : 6 + i * 8]), " ".join(string[6 + i * 8 : 8 + i * 8]))
+			dueAssessments = dueAssessments.text().replace("&nbsp ", "").replace("Tag", "").replace("🤞", " ").replace("🟢", "").replace("🟠", "").replace("Due", "").split()	
+			for i in range(0, int(len(dueAssessments) / 7)):
+				Json_string += '{{"Assessment Name": "{}", "Weight": "{}", "Due": "{}", "Marks": "{}" }},'.format(dueAssessments[0 + i * 7], dueAssessments[1 + i * 7], "-".join(dueAssessments[2 + i * 7 : 5 + i * 7]), " ".join(dueAssessments[5 + i * 7 : 7 + i * 7]))
 		Json_string = '[' + Json_string[0 : len(Json_string) - 1] + ']'
 		print(Json_string)
 if __name__ == "__main__":
