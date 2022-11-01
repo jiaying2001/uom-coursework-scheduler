@@ -1,8 +1,10 @@
 package com.jiaying.parser;
 
-import com.jiaying.configuration.Configuration;
-import com.jiaying.resource.Resource;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import com.jiaying.resource.Unit;
 
 public interface Parser {
-	Configuration parse(Resource resource);
+	ArrayList<Unit> parse(JSONArray courseunits);
 }

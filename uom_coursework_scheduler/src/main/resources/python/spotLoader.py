@@ -1,6 +1,7 @@
 import urllib.request
 import requests
 from lxml import etree
+from pyquery import PyQuery as pq
 
 class Login(object):
 	def __init__(self):
@@ -28,6 +29,7 @@ class Login(object):
 		self.token = selector.xpath('//section[5]/input/@value')
 
 	def login(self):
+		self.getToken()
 		post_data = {
 			"submit": "Login",
 			"_eventId": "submit",
@@ -39,8 +41,21 @@ class Login(object):
 		respond = self.session.post(self.login_url, data=post_data, headers=self.action_headers, allow_redirects=False)
 		respond = self.session.get(respond.headers.get("Location"), headers=self.logined_headers)
 		respond = self.session.get(self.logined_url, headers=self.logined_headers)
-		print(respond.text)
+
+		courseUnits = ["SUM-2022COMP26120", "SUM-2022COMP26020", "SUM-2022COMP24011", "SUM-2022COMP23311", "SUM-2022COMP21111", "SUM-2022COMP22111"]
+		doc = pq(respond.text)
+		for courseUnit in courseUnits:
+			dueAssessments = doc("#" + courseUnit + " td")
+			self.convert_to_JSON(dueAssessments.text())
+	
+	def convert_to_JSON(self, string):
+		string = string.replace("&nbsp ", "").replace("Tag", "").replace("🤞", "submitted ").replace("🟢", "").replace("🟠", "").split()
+		Json_string = ''
+		for i in range(0, int(len(string) / 8)):
+			Json_string += '{{"Assessment Name": "{}", "Weight": "{}", "Due": "{}", "Marks": "{}" }},'.format(string[0 + i * 8], string[1 + i * 8], "-".join(string[2 + i * 8 : 6 + i * 8]), " ".join(string[6 + i * 8 : 8 + i * 8]))
+		Json_string = '[' + Json_string[0 : len(Json_string) - 1] + ']'
+		print(Json_string)
 if __name__ == "__main__":
 	login = Login()
-	login.getToken()
 	login.login()
+
