@@ -2,12 +2,13 @@ package com.jiaying.resource;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Date;
 
 import lombok.Data;
 
 @Data
-public class CourseWork implements Unit {
+public class CourseWork extends ExtraFeatures implements Unit {
 	private final String name;
 	private final String weight;
 	private final Date dueDate;
@@ -18,6 +19,18 @@ public class CourseWork implements Unit {
 		dueDate = builder.dueDate;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public Date getDueDate() {
+		return dueDate;
+	}
+
 	public static class CourseWorkBuilder{
 		private final String name;
 		private final String weight;
@@ -26,8 +39,8 @@ public class CourseWork implements Unit {
 		public CourseWorkBuilder(String name, String weight, String dueDate) throws ParseException{
 			this.name = name;
 			this.weight = weight;
-			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-HH:mm");
-			this.dueDate = formatter.parse(dueDate);
+			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-HH:mm-yyyy");
+			this.dueDate = formatter.parse(dueDate + "-" + Integer.toString(Year.now().getValue()));
 			
 		}
 		public CourseWork build()

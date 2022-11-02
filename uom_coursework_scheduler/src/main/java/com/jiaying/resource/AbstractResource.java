@@ -18,5 +18,9 @@ public abstract class AbstractResource {
 		this.loader = loader;
 	}
 	
+	public ArrayList<Unit> getCourseWorks(){
+		return courseWorks;
+	}
+	
 	abstract void assemble(String filename);
 }
