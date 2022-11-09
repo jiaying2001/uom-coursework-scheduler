@@ -3,6 +3,9 @@ package com.jiaying.timetable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.jiaying.loader.ResourceLoader;
+import com.jiaying.parser.Parser;
+
 public interface ITimetable {
 	ITimeslot getTimeslotAt(Date date);
 	void moveTimeslotTo(ITimeslot timeslot, Date date);
@@ -17,4 +20,5 @@ public interface ITimetable {
 	boolean haveAnyAvailableSlot(Date date);
 	void putTimeslot(ITimeslot timeslot);
 	void removeTimeslot(ITimeslot timeslot);
+	void fileTimetableBy(ResourceLoader loader, Parser parser);
 }
