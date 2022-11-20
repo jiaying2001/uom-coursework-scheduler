@@ -93,12 +93,13 @@ public class Timetable implements ITimetable {
 
 	public static Timetable getInstance() {
 		// TODO Auto-generated method stub
-		return null;
+		return timetable;
 	}
 
 	@Override
-	public void fileTimetableBy(ResourceLoader loader, Parser parser) {
+	public void fillTimetableBy(ResourceLoader loader, Parser parser) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 	

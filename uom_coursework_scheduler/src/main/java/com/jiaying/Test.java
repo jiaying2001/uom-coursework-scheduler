@@ -13,14 +13,15 @@ import org.json.*;
 import com.jiaying.loader.PythonLoader;
 
 public class Test extends TestFather{
-	public Collection doSomething(HashMap map){ 
-		System.out.println("子类被执行..."); 
-		return map.values(); 
-	}
 	
 	public static void main(String args[]) {
-		Test f =new Test(); 
-		HashMap map = new HashMap(); 
-		f.doSomething(map);
+		PythonLoader loader = new PythonLoader();
+		String timetable = loader.load("timetable.py");
+		JSONObject jo = new JSONObject(timetable);
+		JSONArray ja = jo.getJSONArray("activities");
+		JSONObject timeslot = ja.getJSONObject(0);
+		String moduleName = timeslot.getString("moduleName");
+		System.out.println(ja.length());
+		
 	}
 }

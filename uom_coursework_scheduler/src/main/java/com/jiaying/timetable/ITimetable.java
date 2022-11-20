@@ -20,5 +20,5 @@ public interface ITimetable {
 	boolean haveAnyAvailableSlot(Date date);
 	void putTimeslot(ITimeslot timeslot);
 	void removeTimeslot(ITimeslot timeslot);
-	void fileTimetableBy(ResourceLoader loader, Parser parser);
+	void fillTimetableBy(ResourceLoader loader, Parser parser);
 }
