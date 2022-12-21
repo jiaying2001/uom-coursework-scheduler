@@ -1,10 +1,12 @@
 package com.jiaying.resource;
 
 import org.json.JSONArray;
+import org.springframework.stereotype.Component;
 
 import com.jiaying.loader.ResourceLoader;
 import com.jiaying.parser.Parser;
 
+@Component
 abstract class ResourceFromWeb extends AbstractResource {
 	
 	ResourceFromWeb(Parser parser, ResourceLoader loader) {

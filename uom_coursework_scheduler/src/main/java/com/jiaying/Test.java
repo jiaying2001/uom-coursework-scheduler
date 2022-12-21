@@ -15,13 +15,14 @@ import com.jiaying.loader.PythonLoader;
 public class Test extends TestFather{
 	
 	public static void main(String args[]) {
-		PythonLoader loader = new PythonLoader();
-		String timetable = loader.load("timetable.py");
-		JSONObject jo = new JSONObject(timetable);
-		JSONArray ja = jo.getJSONArray("activities");
-		JSONObject timeslot = ja.getJSONObject(0);
-		String moduleName = timeslot.getString("moduleName");
-		System.out.println(ja.length());
+		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+			try {
+				Date test = formatter.parse("18:00");
+				System.out.println(test.toString());
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 	}
 }

@@ -9,7 +9,7 @@ import com.jiaying.parser.Parser;
 public class Timetable implements ITimetable {
 	// 单例模式
 	public static Timetable timetable = new Timetable();
-	private static ArrayList<ITimeslot> timeslots;
+	private ArrayList<ITimeslot> timeslots;
 	
 	private Timetable() {}
 
@@ -101,6 +101,11 @@ public class Timetable implements ITimetable {
 		// TODO Auto-generated method stub
 		
 		
+	}
+
+	public void setTimeslots(ArrayList<ITimeslot> timeslots) {
+		// TODO Auto-generated method stub
+		this.timeslots = timeslots;
 	}
 	
 }

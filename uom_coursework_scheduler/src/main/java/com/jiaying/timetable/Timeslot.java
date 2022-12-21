@@ -1,5 +1,8 @@
 package com.jiaying.timetable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Date;
 
 public class Timeslot implements ITimeslot {
@@ -48,12 +51,24 @@ public class Timeslot implements ITimeslot {
 				this.activityType = activityType;
 				return this;
 			}
-			public TimeslotBuilder startTime(Date startTime) {
-				this.startTime = startTime;
+			public TimeslotBuilder startTime(String startTime) {
+				SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+				try {
+					this.startTime = formatter.parse(startTime);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return this;
 			}
-			public TimeslotBuilder endTime(Date endTime) {
-				this.endTime = endTime;
+			public TimeslotBuilder endTime(String endTime) {
+				SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+				try {
+					this.endTime = formatter.parse(endTime);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				return this;
 			}
 			

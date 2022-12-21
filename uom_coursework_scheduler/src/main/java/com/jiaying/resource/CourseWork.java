@@ -41,7 +41,6 @@ public class CourseWork extends ExtraFeatures implements Unit {
 			this.weight = weight;
 			SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-HH:mm-yyyy");
 			this.dueDate = formatter.parse(dueDate + "-" + Integer.toString(Year.now().getValue()));
-			
 		}
 		public CourseWork build()
 		{

@@ -2,10 +2,13 @@ package com.jiaying.evaluator;
 
 import java.util.ArrayList;
 
-import com.jiaying.resource.AbstractResource;
+import org.springframework.stereotype.Component;
+
 import com.jiaying.resource.CourseWork;
+import com.jiaying.resource.Resource;
 import com.jiaying.resource.Unit;
 
+@Component
 public class Evaluator {
 	private static int[] proportion = new int[] {1, 2, 3};
 	private static int sum;
@@ -18,7 +21,7 @@ public class Evaluator {
 		sum = total;
 	}
 	
-	public static void evaluate(AbstractResource resource){
+	public void evaluate(Resource resource){
 		ArrayList<Unit> courseWorks = resource.getCourseWorks();
 		for(int i=0; i < courseWorks.size(); i++) {
 			CourseWork courseWork = (CourseWork) courseWorks.get(i);
