@@ -1,7 +1,7 @@
 package com.jiaying.resource;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface Resource {
-	public ArrayList<Unit> getCourseWorks();
+	public List<CourseWork> getCourseWorks();
 }

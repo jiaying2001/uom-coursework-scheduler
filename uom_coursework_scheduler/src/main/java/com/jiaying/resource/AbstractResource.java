@@ -11,14 +11,14 @@ import lombok.Data;
 public abstract class AbstractResource {
 	protected Parser parser;
 	protected ResourceLoader loader;
-	protected ArrayList<Unit> courseWorks;
+	protected ArrayList<CourseWork> courseWorks;
 	
 	AbstractResource(Parser parser, ResourceLoader loader){
 		this.parser = parser;
 		this.loader = loader;
 	}
 	
-	public ArrayList<Unit> getCourseWorks(){
+	public ArrayList<CourseWork> getCourseWorks(){
 		return courseWorks;
 	}
 	

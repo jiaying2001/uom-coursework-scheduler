@@ -5,10 +5,14 @@ import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class Timeslot implements ITimeslot {
 		private final String shortName;
 		private final String fullName;
 		private final int duration;
+		private final String weekLabels;
 		private final int scheduleDay;
 		private final String activityType;
 		private final Date startTime;
@@ -22,10 +26,12 @@ public class Timeslot implements ITimeslot {
 			activityType = builder.activityType;
 			startTime = builder.startTime;
 			endTime = builder.endTime;
+			weekLabels = builder.weekLabels;
 		}
 		
 		public static class TimeslotBuilder{
 			private final String shortName;
+			private String weekLabels = "";
 			private String fullName = "";
 			private int duration = 0;
 			private int scheduleDay = 0;
@@ -34,6 +40,10 @@ public class Timeslot implements ITimeslot {
 			private Date endTime = null;
 			public TimeslotBuilder(String shortName) {
 				this.shortName = shortName;
+			}
+			public TimeslotBuilder weekLabels(String weekLabels) {
+				this.weekLabels = weekLabels;
+				return this;
 			}
 			public TimeslotBuilder fullName(String fullName) {
 				this.fullName = fullName;

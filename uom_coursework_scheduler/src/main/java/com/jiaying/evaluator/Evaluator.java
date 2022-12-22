@@ -22,9 +22,8 @@ public class Evaluator {
 	}
 	
 	public void evaluate(Resource resource){
-		ArrayList<Unit> courseWorks = resource.getCourseWorks();
-		for(int i=0; i < courseWorks.size(); i++) {
-			CourseWork courseWork = (CourseWork) courseWorks.get(i);
+		ArrayList<CourseWork> courseWorks = (ArrayList<CourseWork>) resource.getCourseWorks();
+		for(CourseWork courseWork: courseWorks) {
 			courseWork.setOrder(Integer.parseInt(
 					courseWork.getWeight()) * (proportion[0] / sum) +
 					(courseWork.getDueDate().getTime() / (1000 * 60 * 60 * 24)) * (proportion[1] / sum) +

@@ -29,6 +29,7 @@ public class TimetableAssembler implements ITimetableAssembler{
 						.endTime(TimeslotJO.getString("endTime"))
 						.scheduleDay(Integer.parseInt(TimeslotJO.getString("scheduledDay")))
 						.activityType(TimeslotJO.getString("activityType"))
+						.weekLabels(TimeslotJO.getString("weekLabels"))
 						.build();
 				timeslots.add(timeslot);
 			}

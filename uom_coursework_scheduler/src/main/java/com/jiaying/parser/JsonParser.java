@@ -13,8 +13,8 @@ import com.jiaying.resource.Unit;
 public class JsonParser implements Parser {
 
 	@Override
-	public ArrayList<Unit> parse(JSONArray courseunits) {
-		ArrayList<Unit> courseWorks = new ArrayList<>();
+	public ArrayList<CourseWork> parse(JSONArray courseunits) {
+		ArrayList<CourseWork> courseWorks = new ArrayList<>();
 		for (int i = 0; i < courseunits.length(); i++) {
 			JSONObject jo = courseunits.getJSONObject(i);
 			try {

@@ -6,29 +6,23 @@ import java.time.Year;
 import java.util.Date;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class CourseWork extends ExtraFeatures implements Unit {
+	@NonNull
 	private final String name;
+	@NonNull
 	private final String weight;
+	@NonNull
 	private final Date dueDate;
 	
 	CourseWork(CourseWorkBuilder builder){
 		name = builder.name;
 		weight = builder.weight;
 		dueDate = builder.dueDate;
-	}
-	
-	public String getName() {
-		return name;
-	}
-
-	public String getWeight() {
-		return weight;
-	}
-
-	public Date getDueDate() {
-		return dueDate;
 	}
 
 	public static class CourseWorkBuilder{
