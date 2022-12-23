@@ -3,9 +3,12 @@ package com.jiaying.timetable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
 import com.jiaying.loader.ResourceLoader;
 import com.jiaying.parser.Parser;
 
+@Component
 public class Timetable implements ITimetable {
 	// 单例模式
 	public static Timetable timetable = new Timetable();

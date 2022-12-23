@@ -16,25 +16,26 @@ import com.jiaying.timetable.assembler.ITimetableAssembler;
 @Service
 public class ShedulerServiceImpl implements ShedulerService {
 
-	@Autowired
-	ITimetableAssembler timetableAssembler;
+//	@Autowired
+//	ITimetableAssembler timetableAssembler;
 	
 	@Autowired
 	Resource uomSpotResource;
 	
-	@Autowired
-	IEvaluator evaluator;
+//	@Autowired
+//	IEvaluator evaluator;
 	
 	@Autowired 
 	IScheduler scheduler;
 	
-	@Autowired
-	ResourceLoader pythonLoader;
+//	@Autowired
+//	ResourceLoader pythonLoader;
 	
 	public List<ITimeslot> listAllSheduledCoursworks() {
 		// TODO Auto-generated method stub
-		timetableAssembler.assembleTimetable(pythonLoader);
-		evaluator.evaluate(uomSpotResource);
+//		timetableAssembler.assembleTimetable(pythonLoader);
+//		evaluator.evaluate(uomSpotResource);
+		uomSpotResource.assemble("spotLoader.py");
 		return scheduler.schedule(uomSpotResource.getCourseWorks());
 	}
 	

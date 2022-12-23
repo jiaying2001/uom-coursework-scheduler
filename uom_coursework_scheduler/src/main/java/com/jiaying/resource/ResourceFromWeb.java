@@ -14,7 +14,7 @@ abstract class ResourceFromWeb extends AbstractResource {
 	}
 
 	@Override
-	void assemble(String scriptName) {
+	public void assemble(String scriptName) {
 		String courseUnitsJsonStr = loader.load(scriptName);
 		JSONArray courseunits = new JSONArray(courseUnitsJsonStr);
 		this.courseWorks = parser.parse(courseunits);

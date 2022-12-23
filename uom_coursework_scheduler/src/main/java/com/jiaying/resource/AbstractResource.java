@@ -8,7 +8,7 @@ import com.jiaying.parser.Parser;
 import lombok.Data;
 
 @Data
-public abstract class AbstractResource {
+public abstract class AbstractResource implements Resource{
 	protected Parser parser;
 	protected ResourceLoader loader;
 	protected ArrayList<CourseWork> courseWorks;
@@ -22,5 +22,5 @@ public abstract class AbstractResource {
 		return courseWorks;
 	}
 	
-	abstract void assemble(String filename);
+	public abstract void assemble(String filename);
 }

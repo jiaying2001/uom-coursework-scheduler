@@ -2,8 +2,9 @@ package com.jiaying.timetable;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Year;
 import java.util.Date;
+
+import com.jiaying.resource.CourseWork;
 
 import lombok.Data;
 
@@ -17,6 +18,7 @@ public class Timeslot implements ITimeslot {
 		private final String activityType;
 		private final Date startTime;
 		private final Date endTime;
+		private final CourseWork coursework;
 		
 		Timeslot(TimeslotBuilder builder){
 			shortName = builder.shortName;
@@ -27,6 +29,7 @@ public class Timeslot implements ITimeslot {
 			startTime = builder.startTime;
 			endTime = builder.endTime;
 			weekLabels = builder.weekLabels;
+			coursework = builder.coursework;
 		}
 		
 		public static class TimeslotBuilder{
@@ -38,8 +41,13 @@ public class Timeslot implements ITimeslot {
 			private String activityType = "";
 			private Date startTime = null;
 			private Date endTime = null;
+			private CourseWork coursework = null;
 			public TimeslotBuilder(String shortName) {
 				this.shortName = shortName;
+			}
+			public TimeslotBuilder coursework(CourseWork coursework) {
+				this.coursework = coursework;
+				return this;
 			}
 			public TimeslotBuilder weekLabels(String weekLabels) {
 				this.weekLabels = weekLabels;
